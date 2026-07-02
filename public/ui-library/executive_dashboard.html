@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FinAgent Rwanda | Executive Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=IBM+Plex+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ai-gradient-border {
+            border-left: 2px solid transparent;
+            border-image: linear-gradient(to bottom, #84d5c5, #1a237e) 1;
+        }
+        .zebra-stripe:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c5d4;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#84d5c5",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadd",
+                        "on-surface-variant": "#454652",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8eb",
+                        "primary": "#000666",
+                        "tertiary-fixed-dim": "#ffb787",
+                        "surface-container": "#eceef1",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#9defde",
+                        "surface-variant": "#e0e3e6",
+                        "surface": "#f7f9fc",
+                        "background": "#f7f9fc",
+                        "inverse-on-surface": "#eff1f4",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc7",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#005046",
+                        "surface-bright": "#f7f9fc",
+                        "on-secondary-container": "#0f6f62",
+                        "secondary-fixed": "#a0f2e1",
+                        "surface-container-highest": "#e0e3e6",
+                        "outline-variant": "#c6c5d4",
+                        "on-primary-fixed-variant": "#343d96",
+                        "surface-tint": "#4c56af",
+                        "outline": "#767683",
+                        "primary-container": "#1a237e",
+                        "on-primary-fixed": "#000767",
+                        "on-primary-container": "#8690ee",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#311300",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-container": "#ec780c",
+                        "inverse-primary": "#bdc2ff",
+                        "tertiary": "#311300",
+                        "surface-container-low": "#f2f4f7",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary": "#046b5e",
+                        "tertiary-container": "#502400",
+                        "on-secondary-fixed": "#00201b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "cell-padding": "12px",
+                        "container-margin": "24px",
+                        "sidebar-width": "260px",
+                        "gutter": "16px",
+                        "row-padding": "8px"
+                    },
+                    "fontFamily": {
+                        "data-md": ["JetBrains Mono"],
+                        "data-lg": ["JetBrains Mono"],
+                        "data-rwf": ["IBM Plex Mono"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "data-lg": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- SideNavBar (Dark Navy Shell) -->
+<aside class="w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container flex flex-col py-container-margin border-r border-outline-variant z-50">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-fixed-dim rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="text-headline-lg font-bold text-white tracking-tight">FinAgent</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container/60 font-bold">Rwanda SME Edition</p>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim transition-all opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-body-md">Tax & Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-body-md">Banking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-body-md">AI Advisor</span>
+<span class="ml-auto flex h-2 w-2 rounded-full bg-secondary-fixed-dim animate-pulse"></span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 border-t border-white/10 pt-6">
+<div class="bg-white/5 rounded-xl p-4 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-sm" data-icon="bolt">bolt</span>
+<span class="text-[11px] font-bold text-white uppercase tracking-wider">AI Agent: Active</span>
+</div>
+<p class="text-[12px] text-on-primary-container/60">Monitoring tax deadlines & liquidity.</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-sidebar min-h-screen flex flex-col">
+<!-- TopNavBar (Light/Surface) -->
+<header class="h-16 flex justify-between items-center px-container-margin sticky top-0 bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center gap-6">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">FinAgent Rwanda</h2>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Search transactions, invoices or insights..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-body-sm font-bold text-on-surface">Kigali Tech Ltd</p>
+<p class="text-[10px] text-on-surface-variant">Admin Access</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed-dim object-cover shadow-sm" data-alt="A professional business portrait of a Rwandan entrepreneur, male, wearing a clean white shirt and navy blazer. The background is a blurred high-end office in Kigali with warm wooden accents and natural lighting. The style is professional, high-density, and evokes trust and leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDidc8MLqfnszm4WpEkw6CsH-CONtEbMpZjFbO-LN_ErYORGfJSUnQAhARaqbSlwV1Lc4T74Iea2OcoLHc24ft1eSNVALNQNt4hfsOShweOXc40ahobCehu-aMVOztNpqZCYkQhwg3DxjxWC6jAOir0qxTyzkH8JDiK9EGEM4yViyO-Ok53HD_CoB27Gy96jOp4cWEKkZc6Vq6JokroapIHlLFrBju7KNrwpV_qEvdV-DrxOvPauWAzWXrxhNBqYtORGQlY72vGRskq"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-container-margin flex flex-col gap-gutter max-w-[1600px] mx-auto w-full">
+<!-- Welcome Header -->
+<div class="flex justify-between items-end mb-2">
+<div>
+<h3 class="font-headline-xl text-headline-xl text-primary tracking-tight">Executive Dashboard</h3>
+<p class="text-on-surface-variant flex items-center gap-2">
+                        Insights for <span class="font-bold">July 2024</span>
+<span class="text-outline-variant">•</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="update">update</span>
+                        Live sync with BK & I&M Bank
+                    </p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg flex items-center gap-2 font-bold transition-transform hover:scale-[1.02] active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    Generate AI Tax Forecast
+                </button>
+</div>
+<!-- Row 1: Stat Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Cash Position -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container text-on-secondary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<span class="text-[12px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span> +12%
+                        </span>
+</div>
+<p class="text-label-caps text-on-surface-variant mb-1">CASH POSITION</p>
+<h4 class="font-data-rwf text-[22px] font-bold text-primary">RWF 8,240,000</h4>
+<p class="text-[11px] text-outline mt-2 italic">Available across 3 accounts</p>
+</div>
+<!-- Outstanding Invoices -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-fixed text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+</div>
+<span class="text-[12px] font-bold text-primary-container bg-primary-fixed-dim px-2 py-0.5 rounded-full">12 invoices</span>
+</div>
+<p class="text-label-caps text-on-surface-variant mb-1">OUTSTANDING INVOICES</p>
+<h4 class="font-data-rwf text-[22px] font-bold text-primary">RWF 3,150,000</h4>
+<p class="text-[11px] text-outline mt-2 italic">Average collection time: 14 days</p>
+</div>
+<!-- VAT Due (Warning) -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg shadow-sm bg-amber-50/30">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-fixed text-on-tertiary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="priority_high">priority_high</span>
+</div>
+<span class="text-[12px] font-bold text-on-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> Due 8 days
+                        </span>
+</div>
+<p class="text-label-caps text-on-surface-variant mb-1">VAT DUE (JUNE)</p>
+<h4 class="font-data-rwf text-[22px] font-bold text-on-tertiary-container">RWF 890,000</h4>
+<p class="text-[11px] text-on-tertiary-fixed-variant mt-2 italic">Requires approval by Friday</p>
+</div>
+<!-- Monthly Revenue -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-fixed text-on-secondary-fixed-variant rounded-lg">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="text-[12px] font-bold text-secondary flex items-center gap-1">
+                            Target: 95%
+                        </span>
+</div>
+<p class="text-label-caps text-on-surface-variant mb-1">MONTHLY REVENUE</p>
+<h4 class="font-data-rwf text-[22px] font-bold text-primary">RWF 14,200,000</h4>
+<p class="text-[11px] text-outline mt-2 italic">Highest performing quarter</p>
+</div>
+</div>
+<!-- Row 2: Charts & AI Activity -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Large Area Chart (Cash Flow) -->
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h5 class="font-headline-md text-primary">Cash Flow Forecast</h5>
+<p class="text-body-sm text-on-surface-variant">3 Months Actual vs. 3 Months AI-Projected</p>
+</div>
+<div class="flex items-center gap-4 text-[12px] font-bold">
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-primary"></span> Actual</div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-secondary-fixed-dim border border-dashed border-primary"></span> Forecast</div>
+</div>
+</div>
+<div class="h-[280px] w-full relative group">
+<!-- Placeholder for a high-quality area chart -->
+<div class="w-full h-full bg-cover bg-center rounded-lg opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A sophisticated business data visualization showing a multi-colored area chart for cash flow management. The chart features a deep indigo primary line for historical data and a teal dashed line for AI-projected future trends. The aesthetic is institutional, high-density, with clear grid lines and professional typography. Styled with the FinAgent Rwandan SME theme." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpbclg-mDpPNupMNw0C_HqdQ3HozUHLf3dgKY_nSP7WROl_nXjKb4mgAFMcJ-JZbnLcDVdhc1_IgMNdOfDFIBycWIY_RnjOp-aZRtw52vG_UT5kmG2JvV2qIZMaTrVtOrVZkGUVW9Eed407nBm4L2OQ1dQFQgW5-2De-xkOKAzDl76n5QGJUC-HKuon-jZKz_zaYgQBm84-6zvASyXwqbomJYmq0WCC9EGanGlBrxcy7m9KMHgwTwhmfUlAmE1qNYgnlarVExEemSO')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
+</div>
+</div>
+<!-- Expense Pie & AI Activity -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- AI Activity Feed -->
+<div class="bg-primary-container text-white p-5 rounded-lg flex-grow shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+<span class="material-symbols-outlined text-[128px]" data-icon="psychology">psychology</span>
+</div>
+<h5 class="text-label-caps text-secondary-fixed-dim mb-4">AI AGENT ACTIVITY</h5>
+<div class="space-y-4 relative z-10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed-dim flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="description">description</span>
+</div>
+<div>
+<p class="text-body-sm font-bold">Tax Agent</p>
+<p class="text-body-sm text-on-primary-container">Prepared VAT return for June</p>
+<p class="text-[11px] text-on-primary-container/60 mt-1">2 min ago • <span class="text-amber-300 font-bold">Pending approval</span></p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-[18px]" data-icon="analytics">analytics</span>
+</div>
+<div>
+<p class="text-body-sm font-bold">Insights Agent</p>
+<p class="text-body-sm text-on-primary-container">Detected unusual vendor payment</p>
+<p class="text-[11px] text-on-primary-container/60 mt-1">1 hour ago • Resolved</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 bg-white/10 hover:bg-white/20 transition-colors rounded border border-white/20 text-[12px] font-bold uppercase tracking-widest">
+                            View All Activity
+                        </button>
+</div>
+<!-- Small Expense Chart -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg shadow-sm">
+<h5 class="text-label-caps text-on-surface-variant mb-4">EXPENSE BY CATEGORY</h5>
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 rounded-full border-[10px] border-primary border-r-secondary-fixed-dim border-b-tertiary-fixed flex items-center justify-center">
+<span class="text-[12px] font-bold text-primary">RWF</span>
+</div>
+<div class="flex-grow space-y-1 text-[11px]">
+<div class="flex justify-between"><span>Inventory</span> <span class="font-bold">42%</span></div>
+<div class="flex justify-between"><span>Operations</span> <span class="font-bold">28%</span></div>
+<div class="flex justify-between"><span>Payroll</span> <span class="font-bold">20%</span></div>
+<div class="flex justify-between"><span>Others</span> <span class="font-bold">10%</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Data Table -->
+<div class="bg-white border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h5 class="font-headline-md text-primary">Recent Transactions</h5>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-white border border-outline-variant text-[12px] font-bold rounded flex items-center gap-1 hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span> Filter
+                        </button>
+<button class="px-3 py-1.5 bg-white border border-outline-variant text-[12px] font-bold rounded flex items-center gap-1 hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span> Export
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-[#EDF2F7] border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider">Description</th>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Amount (RWF)</th>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider">AI Confidence</th>
+<th class="px-6 py-3 text-label-caps text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="zebra-stripe hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-data-md text-on-surface">12 Jul 2024</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">MTN Rwanda Bulk SMS</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container text-on-surface-variant px-2 py-1 rounded text-[11px] font-bold">MARKETING</span>
+</td>
+<td class="px-6 py-4 font-data-rwf text-right text-primary">RWF 150,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI • 98%
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="zebra-stripe hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-data-md text-on-surface">11 Jul 2024</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">Simba Supermarket Office</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container text-on-surface-variant px-2 py-1 rounded text-[11px] font-bold">OPERATIONS</span>
+</td>
+<td class="px-6 py-4 font-data-rwf text-right text-primary">RWF 24,500</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI • 95%
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="zebra-stripe hover:bg-primary/5 transition-colors bg-amber-50/20 border-l-4 border-amber-400">
+<td class="px-6 py-4 font-data-md text-on-surface">10 Jul 2024</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">Magerwa Customs Fee</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container text-on-surface-variant px-2 py-1 rounded text-[11px] font-bold">LOGISTICS</span>
+</td>
+<td class="px-6 py-4 font-data-rwf text-right text-primary">RWF 1,240,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI • 82%
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-amber-100 text-on-tertiary-container border border-amber-200 rounded text-[11px] font-bold uppercase whitespace-nowrap">Requires Approval</span>
+<button class="material-symbols-outlined text-primary hover:text-secondary-container transition-colors" data-icon="check_circle">check_circle</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="zebra-stripe hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-data-md text-on-surface">09 Jul 2024</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">Rwf Net Limited</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container text-on-surface-variant px-2 py-1 rounded text-[11px] font-bold">UTILITIES</span>
+</td>
+<td class="px-6 py-4 font-data-rwf text-right text-primary">RWF 65,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI • 99%
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant flex justify-center">
+<button class="text-primary font-bold text-body-sm flex items-center gap-2 hover:underline">
+                        View Full Ledger <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spacer for FAB -->
+<div class="h-24"></div>
+</main>
+<!-- Floating 'Ask FinAgent' FAB -->
+<button class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-[0px_8px_24px_rgba(0,6,102,0.3)] flex items-center gap-3 group transition-all duration-300 hover:pr-8 hover:bg-primary-container z-50 overflow-hidden">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] absolute group-hover:scale-0 transition-transform duration-300" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="material-symbols-outlined text-[32px] scale-0 absolute group-hover:scale-100 transition-transform duration-300 text-secondary-fixed-dim" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<span class="font-bold text-headline-md whitespace-nowrap hidden group-hover:block animate-in slide-in-from-left-2 duration-300">Ask FinAgent</span>
+<!-- Subtle ping effect -->
+<span class="absolute top-0 right-0 h-4 w-4 rounded-full bg-secondary-fixed-dim animate-ping opacity-75"></span>
+</button>
+<script>
+        // Micro-interactions for numerical values
+        document.addEventListener('DOMContentLoaded', () => {
+            const amounts = document.querySelectorAll('.font-data-rwf');
+            amounts.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    el.classList.add('text-secondary');
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.classList.remove('text-secondary');
+                });
+            });
+        });
+
+        // Theme toggle logic (placeholder for actual implementation)
+        const toggleTheme = () => {
+            document.documentElement.classList.toggle('dark');
+        };
+    </script>
+</body></html>

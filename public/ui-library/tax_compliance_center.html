@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FinAgent Rwanda - Tax & Compliance Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient-border {
+            border-image: linear-gradient(to bottom, #84d5c5, #000666) 1;
+        }
+        .compliance-gauge {
+            transition: stroke-dashoffset 1s ease-out;
+        }
+        /* Custom scrollbar for high density */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c6c5d4; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #767683; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#84d5c5",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadd",
+                        "on-surface-variant": "#454652",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8eb",
+                        "primary": "#000666",
+                        "tertiary-fixed-dim": "#ffb787",
+                        "surface-container": "#eceef1",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#9defde",
+                        "surface-variant": "#e0e3e6",
+                        "surface": "#f7f9fc",
+                        "background": "#f7f9fc",
+                        "inverse-on-surface": "#eff1f4",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc7",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#005046",
+                        "surface-bright": "#f7f9fc",
+                        "on-secondary-container": "#0f6f62",
+                        "secondary-fixed": "#a0f2e1",
+                        "surface-container-highest": "#e0e3e6",
+                        "outline-variant": "#c6c5d4",
+                        "on-primary-fixed-variant": "#343d96",
+                        "surface-tint": "#4c56af",
+                        "outline": "#767683",
+                        "primary-container": "#1a237e",
+                        "on-primary-fixed": "#000767",
+                        "on-primary-container": "#8690ee",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#311300",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-container": "#ec780c",
+                        "inverse-primary": "#bdc2ff",
+                        "tertiary": "#311300",
+                        "surface-container-low": "#f2f4f7",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary": "#046b5e",
+                        "tertiary-container": "#502400",
+                        "on-secondary-fixed": "#00201b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "cell-padding": "12px",
+                        "container-margin": "24px",
+                        "sidebar-width": "260px",
+                        "gutter": "16px",
+                        "row-padding": "8px"
+                    },
+                    "fontFamily": {
+                        "data-md": ["JetBrains Mono"],
+                        "data-lg": ["JetBrains Mono"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "data-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "data-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed-dim">
+<!-- SideNavBar -->
+<aside class="w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container flex flex-col py-container-margin border-r border-outline-variant z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary rounded flex items-center justify-center text-white font-bold text-headline-lg">F</div>
+<div>
+<h1 class="text-headline-md font-bold text-white leading-tight">FinAgent</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container/60">SME Financial Intelligence</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim opacity-90 transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-body-md">Tax & Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-md">Banking</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-body-md">AI Advisor</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6 pt-4 border-t border-white/10">
+<div class="bg-secondary-container/10 p-3 rounded-lg mb-4">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed-dim animate-pulse"></div>
+<span class="text-[11px] font-bold text-secondary-fixed-dim">AI Agent: Active</span>
+</div>
+<p class="text-[10px] text-on-primary-container/50">Analyzing VAT returns for June...</p>
+</div>
+<a class="flex items-center gap-3 py-2 text-on-primary-container/70 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-[260px] h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-container-margin z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Tax & Compliance Center</h2>
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                RRA INTEGRATION: CERTIFIED
+            </div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-md w-64 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Search obligations, laws..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">translate</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-body-sm font-bold leading-none">Jean-Paul Kagabo</p>
+<p class="text-[10px] text-on-surface-variant">Admin • Kigali Branch</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-outline-variant" data-alt="A professional headshot of a Rwandan male business executive in a dark blue tailored suit, posing against a clean minimalist office background with soft cinematic lighting. The image conveys institutional authority, precision, and a high-end corporate aesthetic matching the Rwandan SME ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA8LcTN6CibsiMewgFWWvlkSWoX7XaC7JZGP_YUJy1jdyFIcNODeIpx4lFdVGu8ddg_XLC5FaG0ypfUd7vSGIHFNbPoJGUKoiXQ4ooYoqENEV_tBgBAUgYue556rPUE-hk-XD1_DwXR3u0Da7JIFV_azHDRByuvFjif0ZZ9NndtAvYd3YpuK3VU9pt8cxdH3zAGuQCaYO0eiIn5FZGZtw9FidzGiCO3Ua6SHZyXUYibmhzrwMPta5-xmNjkyS1PnSmV6y7ZjF3RtbA"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] pt-24 pb-12 px-container-margin">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Bento Row 1: Health Score & Calendar -->
+<div class="col-span-12 lg:col-span-4 bg-white border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-fixed-dim to-primary"></div>
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-6 w-full">Compliance Health Score</h3>
+<div class="relative w-48 h-48">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary compliance-gauge" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="17" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-lg text-[48px] leading-none text-primary">94</span>
+<span class="text-label-caps text-on-surface-variant">Excellent</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-2 px-3 py-1 bg-secondary/10 text-secondary rounded-full">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[12px] font-bold">AI • 98% Confidence</span>
+</div>
+<p class="mt-4 text-center text-body-sm text-on-surface-variant">Your business is currently 100% compliant with all RRA mandatory declarations for Q2.</p>
+</div>
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant">Tax Filing Calendar • June 2025</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-error"></div><span class="text-[11px] text-on-surface-variant">Overdue</span></div>
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-amber-500"></div><span class="text-[11px] text-on-surface-variant">Due < 7d</span></div>
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-secondary"></div><span class="text-[11px] text-on-surface-variant">Submitted</span></div>
+</div>
+</div>
+<!-- Calendar Grid (Simplified high-density) -->
+<div class="grid grid-cols-7 gap-1">
+<!-- Days Labels -->
+<div class="text-center text-[10px] font-bold text-outline py-1">MON</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">TUE</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">WED</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">THU</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">FRI</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">SAT</div>
+<div class="text-center text-[10px] font-bold text-outline py-1">SUN</div>
+<!-- Days -->
+<script>
+                        for(let i=1; i<=30; i++) {
+                            let statusClass = "bg-surface-container-low text-on-surface-variant";
+                            let indicator = "";
+                            if(i === 15) { statusClass = "bg-secondary text-white"; indicator = "VAT"; }
+                            if(i === 10) { statusClass = "bg-error text-white"; indicator = "WHT"; }
+                            if(i === 28) { statusClass = "bg-amber-500/10 border-2 border-amber-500 text-amber-600"; indicator = "PAYE"; }
+                            
+                            document.write(`
+                                <div class="h-16 border border-outline-variant/30 flex flex-col items-center justify-between p-1 group hover:bg-surface-container-high transition-colors cursor-pointer">
+                                    <span class="text-[11px] font-data-md ${i===15 || i===10 ? 'text-white' : 'text-on-surface-variant'}">${i}</span>
+                                    ${indicator ? `<span class="w-full text-center text-[9px] font-bold py-0.5 rounded ${statusClass}">${indicator}</span>` : ''}
+                                </div>
+                            `);
+                        }
+                    </script>
+</div>
+</div>
+<!-- Bento Row 2: Obligation Cards -->
+<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mt-2">
+<!-- VAT Card (Draft Ready) -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4 relative">
+<div class="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-secondary-fixed-dim to-primary"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-caps text-on-surface-variant">Value Added Tax (VAT)</p>
+<h4 class="font-headline-md text-primary mt-1">June 2025</h4>
+</div>
+<div class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-bold">AI DRAFT READY</div>
+</div>
+<div class="py-2">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Estimated Liability</p>
+<p class="font-data-lg text-headline-lg text-on-surface">RWF 890,000</p>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded font-bold text-body-sm hover:opacity-90 transition-opacity">Review & File</button>
+<button class="px-2 border border-outline-variant rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+<!-- PAYE Card (Upcoming) -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-caps text-on-surface-variant">PAYE (Payroll)</p>
+<h4 class="font-headline-md text-primary mt-1">June 2025</h4>
+</div>
+<div class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">Upcoming</div>
+</div>
+<div class="py-2">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Estimated Liability</p>
+<p class="font-data-lg text-headline-lg text-on-surface">RWF 1,200,000</p>
+</div>
+<div class="mt-auto flex flex-col gap-2">
+<div class="flex items-center gap-2 text-amber-600 bg-amber-500/5 p-2 rounded border border-amber-500/20">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="text-[11px] font-bold">Requires Human Approval</span>
+</div>
+<button class="w-full bg-white border border-primary text-primary py-2 rounded font-bold text-body-sm hover:bg-primary/5 transition-colors">Generate Preview</button>
+</div>
+</div>
+<!-- WHT Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-caps text-on-surface-variant">Withholding Tax (WHT)</p>
+<h4 class="font-headline-md text-primary mt-1">May 2025</h4>
+</div>
+<div class="bg-error/10 text-error px-2 py-0.5 rounded text-[10px] font-bold uppercase">Overdue</div>
+</div>
+<div class="py-2">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Final Amount</p>
+<p class="font-data-lg text-headline-lg text-on-surface">RWF 45,200</p>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-error text-white py-2 rounded font-bold text-body-sm hover:opacity-90 transition-opacity">Settle Now</button>
+</div>
+</div>
+<!-- CIT Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-caps text-on-surface-variant">Corp. Income Tax (CIT)</p>
+<h4 class="font-headline-md text-primary mt-1">FY 2024</h4>
+</div>
+<div class="bg-secondary text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Filed
+                        </div>
+</div>
+<div class="py-2">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Paid Amount</p>
+<p class="font-data-lg text-headline-lg text-on-surface">RWF 4,500,000</p>
+</div>
+<div class="mt-auto">
+<button class="w-full border border-outline-variant text-on-surface-variant py-2 rounded font-bold text-body-sm hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Receipt
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Row 3: Insights & RRA Feed -->
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant">Live RRA Connection Feed</h3>
+<div class="flex items-center gap-2 text-[11px] font-bold text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        SYNCHRONIZED 2 MINS AGO
+                    </div>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="p-4 flex items-center justify-between hover:bg-surface transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">receipt</span>
+</div>
+<div>
+<p class="text-body-md font-bold">Electronic Invoice Received #EBM-88219</p>
+<p class="text-body-sm text-on-surface-variant">From: MTN Rwanda Ltd • RWF 145,000 • VAT Incl.</p>
+</div>
+</div>
+<span class="text-data-sm text-outline">10:45 AM</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">update</span>
+</div>
+<div>
+<p class="text-body-md font-bold">New Tax Circular Released</p>
+<p class="text-body-sm text-on-surface-variant">RRA Regulation No. 12/2025 regarding SME CIT incentives.</p>
+</div>
+</div>
+<span class="text-data-sm text-outline">Yesterday</span>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: FinAgent Insight -->
+<div class="col-span-12 lg:col-span-4 bg-primary-container text-on-primary-container rounded-xl p-6 relative overflow-hidden">
+<!-- AI Subtle Pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" width="100%"><pattern height="20" id="grid" patternunits="userSpaceOnUse" width="20"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" stroke-width="0.5"></path></pattern><rect fill="url(#grid)" height="100%" width="100%"></rect></svg>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="text-label-caps font-label-caps text-secondary-fixed-dim">FinAgent AI Advisor</h3>
+</div>
+<p class="text-headline-md font-headline-md text-white mb-4">Potential Tax Savings Detected</p>
+<p class="text-body-sm text-on-primary-container/80 mb-6">Based on your recent capital expenditure for Kigali branch office renovation, you may qualify for a <span class="text-secondary-fixed-dim font-bold">15% accelerated depreciation</span> allowance.</p>
+<div class="bg-white/10 p-4 rounded-lg border border-white/20 mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-body-sm font-bold">Estimated Savings</span>
+<span class="font-data-lg text-secondary-fixed-dim">RWF 1,450,000</span>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-3/4"></div>
+</div>
+</div>
+<button class="w-full bg-secondary-fixed-dim text-on-secondary-fixed font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                        Apply Optimization
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all z-50 group border border-white/20">
+<div class="flex -space-x-2">
+<span class="material-symbols-outlined bg-secondary p-1 rounded-full text-[18px]">psychology</span>
+</div>
+<span class="font-bold text-body-md pr-2">Ask FinAgent</span>
+<!-- Pulse effect for AI -->
+<span class="absolute inset-0 rounded-full border-2 border-secondary animate-ping opacity-20 group-hover:hidden"></span>
+</button>
+<script>
+        // Micro-interaction for the compliance gauge
+        window.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.compliance-gauge');
+            if (circle) {
+                // Score is 94. (283 is full circumference 2*pi*45)
+                // Offset = Circumference - (Score / 100 * Circumference)
+                const score = 94;
+                const circumference = 2 * Math.PI * 45;
+                const offset = circumference - (score / 100 * circumference);
+                
+                setTimeout(() => {
+                    circle.style.strokeDashoffset = offset;
+                }, 300);
+            }
+        });
+    </script>
+</body></html>
