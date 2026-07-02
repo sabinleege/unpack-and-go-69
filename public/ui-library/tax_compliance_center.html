@@ -120,7 +120,7 @@
 </head>
 <body style="overflow-x:hidden" class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed-dim">
 <!-- SideNavBar -->
-<aside id="app-sidebar" class="-translate-x-full md:translate-x-0 transition-transform duration-300 w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container flex flex-col py-container-margin border-r border-outline-variant z-50">
+<aside id="app-sidebar" class="-translate-x-full md:translate-x-0 transition-transform duration-300 w-sidebar-width h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container flex flex-col py-container-margin border-r border-outline-variant z-50">
 <div class="px-6 mb-8">
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 bg-secondary rounded flex items-center justify-center text-white font-bold text-headline-lg">F</div>
@@ -179,7 +179,7 @@
 </div>
 </aside>
 <!-- TopNavBar -->
-<header class="fixed top-0 right-0 left-[260px] h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-container-margin z-40">
+<header class="fixed top-0 right-0 left-0 md:left-[260px] h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-container-margin max-md:pl-16 z-40">
 <div class="flex items-center gap-4">
 <h2 class="font-headline-md text-headline-md font-bold text-primary">Tax & Compliance Center</h2>
 <div class="flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[11px] font-bold">
@@ -450,7 +450,7 @@
 
 <!-- responsive-nav-injected -->
 <button id="navToggle" aria-label="Toggle navigation" class="md:hidden fixed top-3 left-3 z-[70] w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container text-white shadow-lg">
-<span class="material-symbols-outlined">menu</span>
+<span id="navToggleIcon" class="material-symbols-outlined">menu</span>
 </button>
 <div id="navOverlay" class="md:hidden fixed inset-0 bg-black/40 z-[45] hidden"></div>
 <script>
@@ -458,11 +458,17 @@
   var side=document.getElementById('app-sidebar');
   var btn=document.getElementById('navToggle');
   var ov=document.getElementById('navOverlay');
-  function open(){side.classList.remove('-translate-x-full');ov.classList.remove('hidden');}
-  function close(){side.classList.add('-translate-x-full');ov.classList.add('hidden');}
-  btn&&btn.addEventListener('click',function(){side.classList.contains('-translate-x-full')?open():close();});
-  ov&&ov.addEventListener('click',close);
-  side&&side.querySelectorAll('a[href]').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<768)close();});});
+  var icon=document.getElementById('navToggleIcon');
+  if(!side||!btn||!ov)return;
+  function isOpen(){return !side.classList.contains('-translate-x-full');}
+  function open(){side.classList.remove('-translate-x-full');ov.classList.remove('hidden');if(icon)icon.textContent='close';document.body.style.overflow='hidden';}
+  function close(){side.classList.add('-translate-x-full');ov.classList.add('hidden');if(icon)icon.textContent='menu';document.body.style.overflow='';}
+  btn.addEventListener('click',function(e){e.stopPropagation();isOpen()?close():open();});
+  ov.addEventListener('click',close);
+  document.addEventListener('click',function(e){if(window.innerWidth<768&&isOpen()&&!side.contains(e.target)&&!btn.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  side.querySelectorAll('a[href]').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<768)close();});});
+  window.addEventListener('resize',function(){if(window.innerWidth>=768)close();});
 })();
 </script>
 
