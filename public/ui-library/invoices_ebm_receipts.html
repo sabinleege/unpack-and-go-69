@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoice Management | FinAgent Rwanda</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed-dim": "#84d5c5",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d8dadd",
+                    "on-surface-variant": "#454652",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8eb",
+                    "primary": "#000666",
+                    "tertiary-fixed-dim": "#ffb787",
+                    "surface-container": "#eceef1",
+                    "on-background": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#9defde",
+                    "surface-variant": "#e0e3e6",
+                    "surface": "#f7f9fc",
+                    "background": "#f7f9fc",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc7",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#005046",
+                    "surface-bright": "#f7f9fc",
+                    "on-secondary-container": "#0f6f62",
+                    "secondary-fixed": "#a0f2e1",
+                    "surface-container-highest": "#e0e3e6",
+                    "outline-variant": "#c6c5d4",
+                    "on-primary-fixed-variant": "#343d96",
+                    "surface-tint": "#4c56af",
+                    "outline": "#767683",
+                    "primary-container": "#1a237e",
+                    "on-primary-fixed": "#000767",
+                    "on-primary-container": "#8690ee",
+                    "on-tertiary-fixed-variant": "#723600",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#311300",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-container": "#ec780c",
+                    "inverse-primary": "#bdc2ff",
+                    "tertiary": "#311300",
+                    "surface-container-low": "#f2f4f7",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e0e0ff",
+                    "secondary": "#046b5e",
+                    "tertiary-container": "#502400",
+                    "on-secondary-fixed": "#00201b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "cell-padding": "12px",
+                    "container-margin": "24px",
+                    "sidebar-width": "260px",
+                    "gutter": "16px",
+                    "row-padding": "8px"
+            },
+            "fontFamily": {
+                    "data-md": ["JetBrains Mono"],
+                    "data-lg": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "data-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "data-lg": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "data-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .ai-gradient-border {
+            border-left: 3px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(to bottom, #046b5e, #1a237e);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        .zebra-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c5d4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background antialiased overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container border-r border-outline-variant flex flex-col py-container-margin z-50">
+<div class="px-6 mb-8">
+<h1 class="text-headline-lg font-headline-lg font-bold text-white tracking-tight">FinAgent</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container opacity-60 font-bold">SME Financial Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim opacity-90 transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-body-md">Tax &amp; Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-md">Banking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-body-md">AI Advisor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="bg-white/5 rounded-lg p-4 mb-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim animate-pulse"></span>
+<span class="text-label-caps text-secondary-fixed-dim">AI Agent: Active</span>
+</div>
+<p class="text-[11px] text-white/50 leading-tight">Optimizing your EBM filings in real-time for RRA compliance.</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-container-margin sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">FinAgent Rwanda</h2>
+<div class="relative ml-4">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-full py-1.5 pl-10 pr-4 w-64 text-body-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search invoices, TINs, or clients..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">translate</span>
+</button>
+<div class="flex items-center gap-3 ml-2 pl-4 border-l border-outline-variant">
+<div class="text-right">
+<p class="font-label-caps text-primary leading-none mb-1">Mugisha Jean</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Financial Controller</p>
+</div>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="Professional headshot of a Rwandan male business executive in a sharp navy suit, smiling confidently, clean minimalist corporate studio background, soft natural lighting, high-end professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUTvVllqjpAP0XmmWhmJTx30mQRGHNHpGvkuCyLQ8iIm1rAwRhiazMdjsVmCozCxnoaQ6jgu5ko589IponLKmr5OxNyxiDFH4Om3dYMhLFr9rNihT0Eo0bGx-AO1dhu6rxwgjLSvZOSZeJlEdp_oSqozzPe-lsdV9zvzHcLag9QIsj5MdF9PZUFjiDlXUT9myWI2tM-9NuWhq5jOWHA2Lcrvkm4kclBA797Xy4yq5INY0KXuY9QTz26P5VbQ2V0KCwPnC2tMzMaRkk"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-container-margin">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-1">Invoices &amp; EBM Management</h3>
+<p class="text-on-surface-variant font-body-md">Track, manage, and issue certified RRA invoices through EBM integration.</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all shadow-sm active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-caps tracking-normal">Create Invoice / Issue EBM</span>
+</button>
+</div>
+<!-- Summary Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-8">
+<div class="bg-white border border-outline-variant p-6 rounded-xl shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="font-label-caps text-on-surface-variant">Total Outstanding</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-data-lg text-primary">8,450,000</span>
+<span class="text-body-sm text-on-surface-variant font-bold">RWF</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-secondary font-bold text-body-sm">+12%</span>
+<span class="text-on-surface-variant text-[12px]">vs last month</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-6 rounded-xl shadow-sm border-l-4 border-error">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-error/5 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<span class="font-label-caps text-on-surface-variant">Overdue Amount</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-data-lg text-error">2,120,500</span>
+<span class="text-body-sm text-on-surface-variant font-bold">RWF</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-error font-bold text-body-sm">4 Invoices</span>
+<span class="text-on-surface-variant text-[12px]">require immediate attention</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-6 rounded-xl shadow-sm ai-gradient-border">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-secondary/5 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<span class="font-label-caps text-on-surface-variant">Avg. Days to Pay</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-data-lg text-secondary">14.2</span>
+<span class="text-body-sm text-on-surface-variant font-bold">DAYS</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="flex items-center gap-1 bg-secondary-fixed text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                            AI • 98% Confidence
+                        </div>
+<span class="text-on-surface-variant text-[12px]">Predicted for next cycle</span>
+</div>
+</div>
+</div>
+<!-- Invoices Table Section -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Table Filters -->
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex gap-1">
+<button class="px-4 py-2 bg-primary text-white font-label-caps rounded-lg text-[12px] transition-all">All</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container font-label-caps rounded-lg text-[12px] transition-all">Draft</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container font-label-caps rounded-lg text-[12px] transition-all">Sent</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container font-label-caps rounded-lg text-[12px] transition-all">Paid</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container font-label-caps rounded-lg text-[12px] transition-all">Overdue</button>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-2 border border-outline-variant rounded-lg text-body-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 border border-outline-variant rounded-lg text-body-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left zebra-table">
+<thead class="bg-[#EDF2F7] border-b border-outline-variant">
+<tr>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">Invoice #</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">Client</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">TIN</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">Date</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">Due Date</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase text-right">Amount (RWF)</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase text-right">VAT</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase text-center">EBM Status</th>
+<th class="px-cell-padding py-4 font-label-caps text-on-surface-variant text-[11px] uppercase">Status</th>
+<th class="px-cell-padding py-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-cell-padding py-4 font-data-md text-primary">INV-2024-001</td>
+<td class="px-cell-padding py-4">
+<p class="font-bold text-on-surface">Kigali Tech Hub Ltd</p>
+<p class="text-[11px] text-on-surface-variant">Services: Software Dev</p>
+</td>
+<td class="px-cell-padding py-4 font-data-sm text-on-surface-variant">102938475</td>
+<td class="px-cell-padding py-4 text-body-sm">Oct 24, 2024</td>
+<td class="px-cell-padding py-4 text-body-sm">Nov 07, 2024</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-primary">1,250,000</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-on-surface-variant">225,000</td>
+<td class="px-cell-padding py-4 text-center">
+<span class="inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[11px] font-bold">
+                                        EBM Issued <span class="material-symbols-outlined text-[14px]">check_circle</span>
+</span>
+</td>
+<td class="px-cell-padding py-4">
+<span class="text-secondary font-bold text-body-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Paid
+                                    </span>
+</td>
+<td class="px-cell-padding py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 text-outline hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-cell-padding py-4 font-data-md text-primary">INV-2024-002</td>
+<td class="px-cell-padding py-4">
+<p class="font-bold text-on-surface">Rwanda Logistics S.A.</p>
+<p class="text-[11px] text-on-surface-variant">Supply: Equipment</p>
+</td>
+<td class="px-cell-padding py-4 font-data-sm text-on-surface-variant">114477221</td>
+<td class="px-cell-padding py-4 text-body-sm">Oct 20, 2024</td>
+<td class="px-cell-padding py-4 text-body-sm text-error font-bold">Oct 27, 2024</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-primary">3,400,000</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-on-surface-variant">612,000</td>
+<td class="px-cell-padding py-4 text-center">
+<span class="inline-flex items-center gap-1 bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold">
+                                        Pending <span class="material-symbols-outlined text-[14px]">hourglass_empty</span>
+</span>
+</td>
+<td class="px-cell-padding py-4">
+<div class="border border-tertiary-fixed-dim bg-tertiary-fixed/10 px-2 py-1 rounded">
+<span class="text-on-tertiary-container font-bold text-[11px]">Requires Approval</span>
+</div>
+</td>
+<td class="px-cell-padding py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 text-outline hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-cell-padding py-4 font-data-md text-primary">INV-2024-003</td>
+<td class="px-cell-padding py-4">
+<p class="font-bold text-on-surface">Nyirangarama Ent.</p>
+<p class="text-[11px] text-on-surface-variant">Services: Consulting</p>
+</td>
+<td class="px-cell-padding py-4 font-data-sm text-on-surface-variant">100334455</td>
+<td class="px-cell-padding py-4 text-body-sm">Oct 15, 2024</td>
+<td class="px-cell-padding py-4 text-body-sm">Oct 29, 2024</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-primary">850,000</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-on-surface-variant">153,000</td>
+<td class="px-cell-padding py-4 text-center">
+<span class="inline-flex items-center gap-1 bg-error-container text-on-error-container px-3 py-1 rounded-full text-[11px] font-bold">
+                                        Failed <span class="material-symbols-outlined text-[14px]">error</span>
+</span>
+</td>
+<td class="px-cell-padding py-4">
+<span class="text-error font-bold text-body-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span> Overdue
+                                    </span>
+</td>
+<td class="px-cell-padding py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 text-outline hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-cell-padding py-4 font-data-md text-primary">INV-2024-004</td>
+<td class="px-cell-padding py-4">
+<p class="font-bold text-on-surface">Umubano Hotel</p>
+<p class="text-[11px] text-on-surface-variant">Services: Event Support</p>
+</td>
+<td class="px-cell-padding py-4 font-data-sm text-on-surface-variant">109887766</td>
+<td class="px-cell-padding py-4 text-body-sm">Oct 22, 2024</td>
+<td class="px-cell-padding py-4 text-body-sm">Nov 05, 2024</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-primary">2,100,000</td>
+<td class="px-cell-padding py-4 font-data-md text-right text-on-surface-variant">378,000</td>
+<td class="px-cell-padding py-4 text-center">
+<span class="inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[11px] font-bold">
+                                        EBM Issued <span class="material-symbols-outlined text-[14px]">check_circle</span>
+</span>
+</td>
+<td class="px-cell-padding py-4">
+<span class="text-on-surface-variant font-bold text-body-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Sent
+                                    </span>
+</td>
+<td class="px-cell-padding py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 text-outline hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center">
+<p class="text-body-sm text-on-surface-variant">Showing 1-10 of 124 invoices</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-white text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-data-sm shadow-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-white text-on-surface-variant font-data-sm transition-all">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-white text-on-surface-variant font-data-sm transition-all">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-white text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Feedback Bar -->
+<footer class="mt-auto p-container-margin border-t border-outline-variant bg-surface flex justify-between items-center">
+<div class="flex gap-6">
+<a class="text-[12px] font-bold text-on-surface-variant hover:text-primary uppercase tracking-tight transition-colors" href="#">EBM Regulations 2024</a>
+<a class="text-[12px] font-bold text-on-surface-variant hover:text-primary uppercase tracking-tight transition-colors" href="#">RRA API Status: Online</a>
+<a class="text-[12px] font-bold text-on-surface-variant hover:text-primary uppercase tracking-tight transition-colors" href="#">Privacy Policy</a>
+</div>
+<p class="text-body-sm text-on-surface-variant opacity-60">© 2024 FinAgent Rwanda. Institutional Grade Financial Intelligence.</p>
+</footer>
+</main>
+<!-- Floating AI Action Button -->
+<button class="fixed bottom-8 right-8 group z-50" id="ai-fab">
+<div class="absolute -top-12 right-0 bg-primary-container text-white px-4 py-2 rounded-lg text-body-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg border border-secondary-fixed-dim/30">
+            Ask FinAgent about these invoices...
+        </div>
+<div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden">
+<!-- Background Pulse effect -->
+<div class="absolute inset-0 bg-secondary-fixed-dim/20 animate-ping"></div>
+<span class="material-symbols-outlined text-[28px] relative z-10" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</button>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple hover effect for FAB
+        const fab = document.getElementById('ai-fab');
+        fab.addEventListener('click', () => {
+            alert('AI Assistant: Analyzing your Rwandan tax compliance and cash flow trends. One moment...');
+        });
+
+        // Tab selection logic
+        const tabButtons = document.querySelectorAll('.px-4.py-2.font-label-caps');
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white');
+                    b.classList.add('text-on-surface-variant', 'hover:bg-surface-container');
+                });
+                btn.classList.add('bg-primary', 'text-white');
+                btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container');
+            });
+        });
+    </script>
+</body></html>
