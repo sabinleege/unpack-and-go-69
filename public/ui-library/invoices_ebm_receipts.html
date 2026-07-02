@@ -131,27 +131,27 @@
         }
     </style>
 </head>
-<body class="bg-background font-body-md text-on-background antialiased overflow-x-hidden">
+<body style="overflow-x:hidden" class="bg-background font-body-md text-on-background antialiased overflow-x-hidden">
 <!-- SideNavBar -->
-<aside class="w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container border-r border-outline-variant flex flex-col py-container-margin z-50">
+<aside id="app-sidebar" class="-translate-x-full md:translate-x-0 transition-transform duration-300 w-sidebar h-screen fixed left-0 top-0 bg-primary-container text-on-primary-container border-r border-outline-variant flex flex-col py-container-margin z-50">
 <div class="px-6 mb-8">
 <h1 class="text-headline-lg font-headline-lg font-bold text-white tracking-tight">FinAgent</h1>
 <p class="text-[10px] uppercase tracking-widest text-on-primary-container opacity-60 font-bold">SME Financial Intelligence</p>
 </div>
 <nav class="flex-1 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="/ui-library/executive_dashboard.html">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-body-md">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="/ui-library/transaction_ledger.html">
 <span class="material-symbols-outlined">receipt_long</span>
 <span class="font-body-md">Transactions</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim opacity-90 transition-all" href="#">
+<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim opacity-90 transition-all" href="/ui-library/invoices_ebm_receipts.html">
 <span class="material-symbols-outlined">description</span>
 <span class="font-body-md">Invoices</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="/ui-library/tax_compliance_center.html">
 <span class="material-symbols-outlined">gavel</span>
 <span class="font-body-md">Tax &amp; Compliance</span>
 </a>
@@ -187,7 +187,7 @@
 </div>
 </aside>
 <!-- Main Content Area -->
-<main class="ml-sidebar min-h-screen flex flex-col">
+<main class="md:ml-sidebar min-h-screen flex flex-col">
 <!-- TopNavBar -->
 <header class="h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-container-margin sticky top-0 z-40">
 <div class="flex items-center gap-4">
@@ -497,4 +497,23 @@
             });
         });
     </script>
+
+<!-- responsive-nav-injected -->
+<button id="navToggle" aria-label="Toggle navigation" class="md:hidden fixed top-3 left-3 z-[70] w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container text-white shadow-lg">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div id="navOverlay" class="md:hidden fixed inset-0 bg-black/40 z-[55] hidden"></div>
+<script>
+(function(){
+  var side=document.getElementById('app-sidebar');
+  var btn=document.getElementById('navToggle');
+  var ov=document.getElementById('navOverlay');
+  function open(){side.classList.remove('-translate-x-full');ov.classList.remove('hidden');}
+  function close(){side.classList.add('-translate-x-full');ov.classList.add('hidden');}
+  btn&&btn.addEventListener('click',function(){side.classList.contains('-translate-x-full')?open():close();});
+  ov&&ov.addEventListener('click',close);
+  side&&side.querySelectorAll('a[href]').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<768)close();});});
+})();
+</script>
+
 </body></html>
