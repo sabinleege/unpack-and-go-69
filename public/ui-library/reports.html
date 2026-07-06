@@ -3,7 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FinAgent Rwanda | Banking</title>
+<title>FinAgent Rwanda | Reports</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=IBM+Plex+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -154,11 +154,11 @@
 <span class="material-symbols-outlined" data-icon="gavel">gavel</span>
 <span class="font-body-md">Tax & Compliance</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim transition-all opacity-90" href="/ui-library/banking.html">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="/ui-library/banking.html">
 <span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
 <span class="font-body-md">Banking</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 hover:text-white transition-colors" href="/ui-library/reports.html">
+<a class="flex items-center gap-3 px-4 py-3 bg-white/10 text-secondary-fixed-dim border-l-4 border-secondary-fixed-dim transition-all opacity-90" href="/ui-library/reports.html">
 <span class="material-symbols-outlined" data-icon="assessment">assessment</span>
 <span class="font-body-md">Reports</span>
 </a>
@@ -192,7 +192,7 @@
 <h2 class="font-headline-md text-headline-md font-bold text-primary">FinAgent Rwanda</h2>
 <div class="relative w-80 hidden md:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Search banking..." type="text"/>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Search reports..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-4">
@@ -216,167 +216,128 @@
 <div class="p-container-margin flex flex-col gap-gutter max-w-[1600px] mx-auto w-full">
 <div class="flex justify-between items-end mb-2">
 <div>
-<h3 class="font-headline-xl text-headline-xl text-primary tracking-tight">Banking</h3>
-<p class="text-on-surface-variant">Manage connected accounts, balances and cash flow</p>
+<h3 class="font-headline-xl text-headline-xl text-primary tracking-tight">Reports</h3>
+<p class="text-on-surface-variant">Generate financial statements and business insights</p>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-2">
 <div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3">
 <div class="flex items-center justify-between">
 <div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-primary-container" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="payments">payments</span>
 </div>
-<span class="text-label-caps text-on-surface-variant uppercase">Total Balance</span>
+<span class="text-label-caps text-on-surface-variant uppercase">Total Revenue</span>
 </div>
-<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 21.3M</p>
-<p class="text-body-sm text-on-surface-variant">Across 4 accounts</p>
-</div>
-<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3">
-<div class="flex items-center justify-between">
-<div class="w-10 h-10 rounded-lg bg-tertiary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-primary-container" data-icon="trending_up">trending_up</span>
-</div>
-<span class="text-label-caps text-on-surface-variant uppercase">Inflows (MTD)</span>
-</div>
-<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 8.4M</p>
-<p class="text-body-sm text-on-surface-variant">+12% vs last month</p>
+<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 48.2M</p>
+<p class="text-body-sm text-on-surface-variant">YTD 2024</p>
 </div>
 <div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3">
 <div class="flex items-center justify-between">
 <div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center">
-<span class="material-symbols-outlined text-primary-container" data-icon="trending_down">trending_down</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="shopping_cart">shopping_cart</span>
 </div>
-<span class="text-label-caps text-on-surface-variant uppercase">Outflows (MTD)</span>
+<span class="text-label-caps text-on-surface-variant uppercase">Total Expenses</span>
 </div>
-<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 5.1M</p>
-<p class="text-body-sm text-on-surface-variant">-4% vs last month</p>
+<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 31.6M</p>
+<p class="text-body-sm text-on-surface-variant">YTD 2024</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" data-icon="savings">savings</span>
+</div>
+<span class="text-label-caps text-on-surface-variant uppercase">Net Profit</span>
+</div>
+<p class="text-headline-lg font-bold text-on-surface font-data-rwf">RWF 16.6M</p>
+<p class="text-body-sm text-on-surface-variant">34% margin</p>
 </div>
 <div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3">
 <div class="flex items-center justify-between">
 <div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-primary-container" data-icon="sync">sync</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="description">description</span>
 </div>
-<span class="text-label-caps text-on-surface-variant uppercase">Last Sync</span>
+<span class="text-label-caps text-on-surface-variant uppercase">Reports Generated</span>
 </div>
-<p class="text-headline-lg font-bold text-on-surface font-data-rwf">2 min ago</p>
-<p class="text-body-sm text-on-surface-variant">BK & I&M connected</p>
+<p class="text-headline-lg font-bold text-on-surface font-data-rwf">128</p>
+<p class="text-body-sm text-on-surface-variant">This year</p>
 </div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-<div class="lg:col-span-2"><div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
-<div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant">
-<h4 class="font-headline-md text-headline-md text-on-surface">Linked Accounts</h4>
-<button class="flex items-center gap-1 text-body-sm font-bold text-primary"><span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>Link account</button>
-</div>
-<div class="p-5"><div class="flex flex-col gap-3"><div class="flex items-center justify-between p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-4">
-<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
-</div>
-<div>
-<p class="font-bold text-on-surface">Operating Account</p>
-<p class="text-body-sm text-on-surface-variant">Bank of Kigali &bull; ****4021</p>
-</div>
-</div>
-<div class="text-right">
-<p class="font-data-rwf font-bold text-on-surface">RWF 12,480,000</p>
-<span class="text-[10px] font-bold uppercase bg-secondary-container text-on-secondary-container px-2 py-1 rounded">Primary</span>
-</div>
-</div><div class="flex items-center justify-between p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-4">
-<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
-</div>
-<div>
-<p class="font-bold text-on-surface">Payroll Account</p>
-<p class="text-body-sm text-on-surface-variant">I&M Bank &bull; ****8834</p>
-</div>
-</div>
-<div class="text-right">
-<p class="font-data-rwf font-bold text-on-surface">RWF 3,150,000</p>
-<span class="text-[10px] font-bold uppercase bg-secondary-container text-on-secondary-container px-2 py-1 rounded">Payroll</span>
-</div>
-</div><div class="flex items-center justify-between p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-4">
-<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
-</div>
-<div>
-<p class="font-bold text-on-surface">Tax Reserve</p>
-<p class="text-body-sm text-on-surface-variant">Bank of Kigali &bull; ****2290</p>
-</div>
-</div>
-<div class="text-right">
-<p class="font-data-rwf font-bold text-on-surface">RWF 5,720,000</p>
-<span class="text-[10px] font-bold uppercase bg-secondary-container text-on-secondary-container px-2 py-1 rounded">Reserve</span>
-</div>
-</div><div class="flex items-center justify-between p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-4">
-<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
-</div>
-<div>
-<p class="font-bold text-on-surface">USD Account</p>
-<p class="text-body-sm text-on-surface-variant">Equity Bank &bull; ****1177</p>
-</div>
-</div>
-<div class="text-right">
-<p class="font-data-rwf font-bold text-on-surface">USD 18,400</p>
-<span class="text-[10px] font-bold uppercase bg-secondary-container text-on-secondary-container px-2 py-1 rounded">FX</span>
-</div>
-</div></div></div>
-</div></div>
-<div><div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
-<div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant">
-<h4 class="font-headline-md text-headline-md text-on-surface">Cash Position</h4>
-
-</div>
-<div class="p-5"><div class="flex flex-col items-center justify-center py-6">
-<div class="relative w-40 h-40 rounded-full flex items-center justify-center" style="background:conic-gradient(#046b5e 0 62%,#ffb787 62% 85%,#ba1a1a 85% 100%)">
-<div class="w-28 h-28 rounded-full bg-surface-container-lowest flex flex-col items-center justify-center">
-<span class="text-[11px] uppercase text-on-surface-variant">Healthy</span>
-<span class="font-data-rwf font-bold text-on-surface">62%</span>
-</div>
-</div>
-<div class="mt-6 w-full space-y-2 text-body-sm">
-<div class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-secondary"></span>Operating</span><span class="font-data-rwf">62%</span></div>
-<div class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim"></span>Reserves</span><span class="font-data-rwf">23%</span></div>
-<div class="flex justify-between"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-error"></span>Committed</span><span class="font-data-rwf">15%</span></div>
-</div>
-</div></div>
-</div></div>
 </div>
 <div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
 <div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant">
-<h4 class="font-headline-md text-headline-md text-on-surface">Recent Bank Transactions</h4>
+<h4 class="font-headline-md text-headline-md text-on-surface">Revenue Trend (Monthly)</h4>
 
 </div>
-<div class="p-5"><div class="overflow-x-auto"><table class="w-full"><thead><tr class="text-label-caps uppercase text-on-surface-variant border-b border-outline-variant"><th class="text-left py-2 px-2">Date</th><th class="text-left py-2 px-2">Description</th><th class="text-left py-2 px-2">Account</th><th class="text-right py-2 px-2">Amount</th></tr></thead><tbody><tr class="zebra-stripe border-b border-outline-variant">
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Jul 05</td>
-<td class="py-3 px-2 text-body-sm font-medium text-on-surface">MTN MoMo Payout</td>
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Operating</td>
-<td class="py-3 px-2 text-right font-data-rwf text-secondary font-medium">+RWF 840,000</td>
-</tr><tr class="zebra-stripe border-b border-outline-variant">
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Jul 04</td>
-<td class="py-3 px-2 text-body-sm font-medium text-on-surface">Airtel Bulk Payment</td>
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Payroll</td>
-<td class="py-3 px-2 text-right font-data-rwf text-error font-medium">-RWF 1,200,000</td>
-</tr><tr class="zebra-stripe border-b border-outline-variant">
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Jul 03</td>
-<td class="py-3 px-2 text-body-sm font-medium text-on-surface">Client Wire - Andela</td>
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">USD Account</td>
-<td class="py-3 px-2 text-right font-data-rwf text-secondary font-medium">+USD 4,500</td>
-</tr><tr class="zebra-stripe border-b border-outline-variant">
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Jul 02</td>
-<td class="py-3 px-2 text-body-sm font-medium text-on-surface">RRA Tax Transfer</td>
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Tax Reserve</td>
-<td class="py-3 px-2 text-right font-data-rwf text-error font-medium">-RWF 620,000</td>
-</tr><tr class="zebra-stripe border-b border-outline-variant">
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Jul 01</td>
-<td class="py-3 px-2 text-body-sm font-medium text-on-surface">Supplier - Simba Supermarket</td>
-<td class="py-3 px-2 text-body-sm text-on-surface-variant">Operating</td>
-<td class="py-3 px-2 text-right font-data-rwf text-error font-medium">-RWF 310,000</td>
-</tr></tbody></table></div></div>
+<div class="p-5"><div class="flex items-end gap-3 h-48 pt-4"><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:88.0px"></div><span class="text-[11px] text-on-surface-variant">Jan</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:112.0px"></div><span class="text-[11px] text-on-surface-variant">Feb</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:76.80000000000001px"></div><span class="text-[11px] text-on-surface-variant">Mar</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:131.20000000000002px"></div><span class="text-[11px] text-on-surface-variant">Apr</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:102.4px"></div><span class="text-[11px] text-on-surface-variant">May</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:144.0px"></div><span class="text-[11px] text-on-surface-variant">Jun</span></div><div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t" style="height:121.60000000000001px"></div><span class="text-[11px] text-on-surface-variant">Jul</span></div></div></div>
+</div>
+<div class="mt-2">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Standard Reports</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter"><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="summarize">summarize</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Monthly</span>
+</div>
+<p class="font-bold text-on-surface">Profit & Loss</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">Revenue, expenses and net margin</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="account_balance">account_balance</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Quarterly</span>
+</div>
+<p class="font-bold text-on-surface">Balance Sheet</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">Assets, liabilities and equity</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="payments">payments</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Monthly</span>
+</div>
+<p class="font-bold text-on-surface">Cash Flow Statement</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">Operating, investing & financing</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Monthly</span>
+</div>
+<p class="font-bold text-on-surface">VAT Return Summary</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">Output & input VAT for RRA</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="groups">groups</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Monthly</span>
+</div>
+<p class="font-bold text-on-surface">Payroll Report</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">PAYE, RSSB and net pay</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div><div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant flex flex-col gap-3 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" data-icon="insights">insights</span></div>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high text-on-surface-variant px-2 py-1 rounded">Custom</span>
+</div>
+<p class="font-bold text-on-surface">Expense Breakdown</p>
+<p class="text-body-sm text-on-surface-variant flex-grow">Spend by category & vendor</p>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 flex items-center justify-center gap-1 text-body-sm font-bold text-primary border border-outline-variant rounded-lg py-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>View</button>
+<button class="flex items-center justify-center gap-1 text-body-sm font-bold text-white bg-primary-container rounded-lg px-3 py-2"><span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span></button>
+</div>
+</div></div>
 </div>
 </div>
 </main>
